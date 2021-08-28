@@ -1,3 +1,6 @@
+![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=dynamint-web-app)
+
+
 ## Getting Started
 
 Add .env file with
