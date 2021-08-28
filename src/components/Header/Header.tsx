@@ -7,7 +7,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import logo from "../../assets/dynamint.png";
 
-import NavItem from "./NavItem";
 import ConnectedButton from "./ConnectedButton";
 
 export default function Header({}) {
@@ -58,6 +57,7 @@ export default function Header({}) {
                 </div>
               </div>
             </nav>
+            {/** 
             <Transition
               show={open}
               as={Fragment}
@@ -94,7 +94,7 @@ export default function Header({}) {
                   </div>
                 </div>
               </Popover.Panel>
-            </Transition>
+            </Transition>*/}
           </>
         )}
       </Popover>

@@ -38,4 +38,3 @@ const useTokenBalance = (
   return { balance }
 }
 export default useTokenBalance
-{"mode":"full","isActive":false}
