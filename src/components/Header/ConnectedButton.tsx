@@ -9,7 +9,8 @@ import {
   ReactNode,
   useMemo,
 } from "react";
-import { LCDClient } from "@terra-money/terra.js";
+import { LCDClient, Coin } from "@terra-money/terra.js";
+import BigNumber from 'bignumber.js'
 import {
   useWallet,
   WalletStatus,
@@ -26,6 +27,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import Terra from "../../assets/terra.svg";
 import WalletConnect from "../../assets/walletconnect.svg";
+import { TERRA_TOKENS, DENOM_UNIT} from '../../utils/terra'
 
 export interface ConnectedButtonProps {}
 
@@ -63,7 +65,7 @@ const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
   const connectedWallet = useConnectedWallet();
 
   const [showConnectOptions, setShowConnectOptions] = useState(false);
-  const [bank, setBank] = useState();
+  const [bank, setBank] = useState('');
 
   const lcd = useMemo(() => {
     if (!connectedWallet) {
@@ -79,12 +81,18 @@ const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
   useEffect(() => {
     if (connectedWallet && lcd) {
       setShowConnectOptions(false);
-      lcd.bank.balance(connectedWallet.walletAddress).then((coins) => {
-        let uusd = coins.filter((c) => {
-          return c.denom === "uusd";
+
+      const balances: Record<string, number> = {};
+        lcd.bank.balance(connectedWallet.walletAddress).then((coins) => {
+          coins.toArray().forEach(async (coin: Coin) => {
+          const item = coin.toData();
+          const denom = item.denom;
+          const amount = parseFloat(item.amount) / DENOM_UNIT;
+          const symbol = TERRA_TOKENS[denom];
+          balances[symbol] = amount;
         });
-        let ust = parseInt(uusd) / 1000000;
-        setBank(ust.toFixed(2).toString());
+        const ust = balances['UST']?.toFixed(2).toString() ?? '0.00'
+        setBank(ust)
       });
     } else {
       setBank(null);
