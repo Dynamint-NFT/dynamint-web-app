@@ -12,7 +12,7 @@ import ConnectedButton from "./ConnectedButton";
 
 export default function Header({}) {
   return (
-    <header tw="sticky w-full top-0 z-10 container mx-auto my-4 flex items-center bg-indigo-dark bg-opacity-70 transition duration-300 ease-in-out backdrop-filter backdrop-blur-sm md:backdrop-blur-sm shadow-lg ">
+    <header tw="sticky w-full top-0 z-10 container mx-auto my-4 flex items-center transition duration-300 ease-in-out backdrop-filter backdrop-blur-sm md:backdrop-blur-sm">
       <Popover
         tw="relative w-full lg:static lg:overflow-y-visible"
         /** 
@@ -33,10 +33,10 @@ export default function Header({}) {
                       <Image
                         src={logo}
                         alt="Dynamint"
-                        width={80}
-                        height={80}
+                        width={40}
+                        height={40}
                       />
-                      <span tw="text-white uppercase text-lg font-black select-none">
+                      <span tw="ml-4 uppercase text-lg font-black select-none">
                         Dynamint
                       </span>
                     </a>
@@ -84,12 +84,7 @@ export default function Header({}) {
                   </div>
                   <div tw="pt-5 pb-6">
                     <div tw="flex items-center mr-8">
-                      <Image
-                        src={logo}
-                        alt="Dynamint"
-                        width={80}
-                        height={80}
-                      />
+                      
                     </div>
                     <ul tw="px-2 space-y-1">
                       <li>

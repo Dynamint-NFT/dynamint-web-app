@@ -30,32 +30,17 @@ import WalletConnect from "../../assets/walletconnect.svg";
 export interface ConnectedButtonProps {}
 
 const connectOptionStyles = css`
-  background: linear-gradient(
-    328.75deg,
-    #f042f0 -5.49%,
-    #8a249d 19.13%,
-    #0f0038 104.44%
-  );
-  ${tw`inline-flex ml-2 my-4 px-4 py-4 rounded-lg border-pink-light hover:border-pink-light`}
+  ${tw`inline-flex ml-2 my-4 px-4 py-4 rounded-lg shadow`}
 `;
 
 const bgConnectOptionStyles = css`
-  background: linear-gradient(328.75deg, #493c85 -5.49%, #0f0038 104.44%);
-  box-shadow: 0px 28px 48px #0f0038;
-  ${tw`inline-block align-bottom bg-blue-dark rounded-lg px-2  pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6`}
+  ${tw`inline-block align-bottom rounded-lg px-2  pb-4 bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6`}
 `;
 
 const size = { width: 24, height: 24 };
 
 const connectButtonStyles = css`
-  background: linear-gradient(
-      92.8deg,
-      rgba(255, 255, 255, 0.6) -1.42%,
-      rgba(10, 176, 96, 0.6) 102.82%
-    ),
-    #20ff93;
-  box-shadow: 0px 0px 33px #20ff93;
-  ${tw`inline-flex m-4 items-center bg-green-light py-1.5 border border-transparent font-medium rounded shadow-sm text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-light`}
+  ${tw`inline-flex m-4 items-center py-1.5 border border-transparent font-medium rounded border text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 shadow`}
 `;
 
 const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
@@ -175,7 +160,7 @@ const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
         isOpen={showConnectOptions}
         onDismiss={(): void => setShowConnectOptions(false)}
         aria-label="dialog"
-        tw="fixed bg-black bg-opacity-80 shadow-2xl top-0 right-0 bottom-0 left-0 z-10 overflow-y-scroll"
+        tw="fixed bg-black bg-opacity-70 shadow-2xl top-0 right-0 bottom-0 left-0 z-10 overflow-y-scroll"
       >
         <AnimatePresence>
           <motion.div
@@ -196,7 +181,7 @@ const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
                   &#8203;
                 </span>
                 <div css={bgConnectOptionStyles}>
-                  <div tw="pb-8 text-white text-center text-lg font-bold">
+                  <div tw="pb-8 text-black text-center text-lg font-bold">
                     Connect to a wallet
                   </div>
                   <div>
@@ -210,7 +195,7 @@ const ConnectedButton: React.FC<ConnectedButtonProps> = (props) => {
                             tw="w-80"
                           >
                             <span tw="ml-4 mr-6">{image}</span>
-                            <span tw="text-white font-bold">{label}</span>
+                            <span tw="font-bold">{label}</span>
                           </button>
                         )
                       )}
