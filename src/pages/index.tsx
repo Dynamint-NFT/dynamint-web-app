@@ -8,9 +8,7 @@ import { useRecoilState } from "recoil";
 import { useTerra } from "../hooks/useTerra";
 import Layout from "../components/Layout";
 
-
 export default function Home() {
-
   const terra = new LCDClient({
     URL: "https://lcd.terra.dev/",
     chainID: "columbus-4",
@@ -46,7 +44,12 @@ export default function Home() {
 
       <Layout>
         <main tw="relative mt-16 lg:mt-24 pb-4">
-          ...
+          <iframe
+            tw="fixed top-0 w-screen h-screen"
+            src="https://gateway.pinata.cloud/ipfs/QmSiNEFz7wrivBFJkNgsbXmegBLRwWzsfkju38pUQS7KxN"
+            title="Busan"
+            frameBorder="0"
+          ></iframe>
         </main>
       </Layout>
     </>
